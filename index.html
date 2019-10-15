@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="app">
+        <div id="searchBox" v-cloak>
+          <input
+            id="search-input"
+            type="search"
+            required
+            v-model="user"
+            placeholder="Search a github user account..."
+            @keyup.enter="searchUser"
+          />
+          <button
+            class="btn btn-primary"
+            type="button"
+            @click.prevent="searchUser"
+          >
+            Search
+          </button>
+        </div>
+
+        <div class="app-content" v-cloak>
+
+          <hr />
+
+          <div v-if="error" class="alert alert-danger" role="alert">
+            Erro! Verifique se o nome de usuário que você está correto.
+          </div>
+
+          <div class="result" v-if="data && data.length">
+            <table class="table table-dark table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Project</th>
+                  <th scope="col">Private</th>
+                  <th scope="col">URL</th>
+                  <th scope="col">Description</th>
+                  <th scope="col" class="x-sort" @click="sortByLang">
+                    Lang <span v-if="sortState">&#x2B07;&#xFE0F;</span
+                    ><span v-else="sortState">&#x2B06;&#xFE0F;</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="repo in data">
+                  <th scope="row" v-html="repo.name"></th>
+                  <td v-html="repo.private"></td>
+                  <td v-html="repo.html_url"></td>
+                  <td v-html="repo.description"></td>
+                  <td v-html="repo.language"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>

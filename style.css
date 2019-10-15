@@ -1,0 +1,33 @@
+[v-cloak] {
+  display: none;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+#searchBox {
+	border-radius: 6px;
+	box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.3);
+	max-width: 500px;
+	margin: auto;
+	padding: 20px;
+	text-align: center;
+}
+
+#search-input {
+	border: 1px solid #bdbdbd;
+	border-radius: 4px;
+	height: 37px;
+	padding-left: 10px;
+	outline: none;
+	width: 60%;
+}
+
+.app-content {
+  padding: 20px
+}
+
+x-sort {
+  cursor: pointer;
+}
